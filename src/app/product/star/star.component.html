@@ -1,0 +1,27 @@
+    <!--Stars Rating showing using Bar-->
+<!--<div style="border:solid;background-color: lightcyan"
+     style.width.px = "{{starWidth}}"
+     [title]="rating"
+     (click)="childFun()"
+>
+  <div style="width: 140px;border: ridge" >
+    <span class="glyphicon glyphicon-star-empty"></span>1
+    <span class="glyphicon glyphicon-star-empty"></span>2
+    <span class="glyphicon glyphicon-star-empty"></span>3
+    <span class="glyphicon glyphicon-star-empty"></span>4
+    <span class="glyphicon glyphicon-star-empty"></span>5
+  </div>
+</div>-->
+    <!--Stars Rating showing using Stars only-->
+<div class="crop"
+     [style.width.px]="starWidth"
+     [title]="rating"
+     (click)='childFun()'>
+  <div style="width: 86px">
+    <span class="glyphicon glyphicon-star"></span>
+    <span class="glyphicon glyphicon-star"></span>
+    <span class="glyphicon glyphicon-star"></span>
+    <span class="glyphicon glyphicon-star"></span>
+    <span class="glyphicon glyphicon-star"></span>
+  </div>
+</div>

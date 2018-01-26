@@ -1,0 +1,76 @@
+<div class="panel panel-primary">
+<div class="panel-heading" >
+<marquee>
+  {{productComponentTitle}}
+  <i><u>
+  {{productNameInItalic}}
+  </u>
+  </i>
+  for all your needs
+</marquee>
+</div>
+<div align="left">
+  filter : <input type="text" [(ngModel)] = 'listFilter'><br>
+  Filtered By : {{listFilter}}
+</div>
+
+<div >
+
+  <button (click)="toggleImage()" class="btn btn-primary">{{showImage ? 'Hide' : 'Show'}} Image</button>
+
+  <table class="table" border="1" *ngIf="productsList && productsList.length">
+    <thead>
+    <tr>
+
+      <th>ProductImage</th>
+      <th>ProductId</th>
+      <th>Product</th>
+      <th>Code</th>
+      <th>Avaliable</th>
+      <th>Price</th>
+      <th>Rating{{ratingMessage_RxedFromChildComp}} Out of 5</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+
+    </thead>
+    <tbody>
+
+    <tr *ngFor="let product of productsList">
+      <td><img [src]="product.productImage" [title]="product.productName" [style.width.px] = "imageWidth" *ngIf="showImage" ></td>  <!-- <td><img src="{{product.productImage}}"></td> -->
+      <td>{{product.productId}}</td>
+
+      <td>
+        <a [routerLink]="['/products',product.productId]" >{{product.productName | uppercase}}</a>
+      </td>
+
+      <td>{{product.productCode | lowercase | convertTOspace : '-'}}</td>
+      <td>{{product.productAvaliableDate}}</td>
+      <td>{{product.price | currency:'USD':"symbol-narrow"}}</td>
+      <td>
+        <!--child to parent component communication using @Input() decorator in child component
+         and property binding for child directive's attribute -->
+        <app-star [rating] = 'product.productRating'
+        (mynotify) = "parentFun($event)"
+        >
+
+        </app-star>
+        <!--Instead of performing Property binding, We can also perfrom Interpolation-->
+       <!-- <app-star rating = '{{product.productRating}}'></app-star>-->
+      </td>
+
+      <td>
+        <a class="btn btn-primary"
+           [routerLink]="['/productedit', product.productId]">Edit</a>
+      </td>
+      <td>
+        <a class="btn btn-danger"
+           (click)="deleteParticularProduct(product.productId)">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+
+  </table>
+</div>
+
+</div>

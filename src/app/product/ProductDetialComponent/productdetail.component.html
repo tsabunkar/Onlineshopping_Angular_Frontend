@@ -1,0 +1,58 @@
+
+<div *ngIf="product">  <!--  If product Object exist then div element is executed -->
+
+
+  <h3>{{pageTitle + product?.productName | uppercase}}</h3>
+  <!-- ? is Safe navigation operation -> which  safeguard or protect form undefine and null
+                                      Safe navigator operator is used while navigation in a Object
+                                       If Product Object is null or undefine then safe navigator operator
+                                       doest not allow product Obj to acess its property (ie productName)
+                                       safe navigator doesnt work with ngModel ie Two way binding-->
+
+
+  <table class="table" border="1">
+
+    <tr>
+      <th>ProductName</th>
+      <td>{{product?.productName}}</td>
+      <td rowspan="5" align="center"><img width="400px" [src]="product.productImage"></td>
+    </tr>
+    <tr>
+      <th>ProductCode</th>
+      <td>{{product?.productCode}}</td>
+
+    </tr>
+    <tr>
+      <th>ProductAvaliableDate</th>
+      <td>{{product?.productAvaliableDate}}</td>
+
+    </tr>
+    <tr>
+      <th>ProductRating</th>
+      <td>{{product?.productRating}}</td>
+
+    </tr>
+    <tr>
+      <th>Price</th>
+      <td>{{product?.price}}</td>
+
+    </tr>
+
+
+  </table>
+  <div   >
+
+    <button type="button" class="btn btn-default btn-sm"  (click)="leftProductComp()" style="float: left">
+      <span class="glyphicon glyphicon-chevron-left"></span> Left
+    </button>
+
+    <button type="button" class="btn btn-default btn-sm"  (click)="backToProductListComp()">
+      <span class="glyphicon glyphicon-chevron-center"></span> Back
+    </button>
+
+    <button type="button" class="btn btn-default btn-sm"  (click)="rightProductComp()" style="float: right">
+      <span class="glyphicon glyphicon-chevron-right"></span> Right
+    </button>
+  </div>
+
+</div>
