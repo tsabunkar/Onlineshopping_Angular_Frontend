@@ -53,17 +53,20 @@ export class ProductComponent implements OnInit{
 
 
 
+  deleteParticularProduct(id : number) {
 
-  deleteParticularProduct(id : number){
+    if (confirm(`Are sure you want to delete this product permanently : ${id}?`))   {
 
-      this.customProdServ_ReferVara.deleteProduct_Service_FromBackend(id)
-                                  .subscribe( (arg : string) =>{
-                                    //this.deletedResultData = arg
-                                    console.log(arg)
-                                    this.sweetAlertDelete(arg)
-                                    //alert(arg)
+            this.customProdServ_ReferVara.deleteProduct_Service_FromBackend(id)
+              .subscribe((arg: string) => {
+                //this.deletedResultData = arg
+                console.log(arg)
+                this.sweetAlertDelete(arg)
+                //alert(arg)
 
-                                  }, err => this.errorMess)
+              }, err => this.errorMess)
+
+  }
 
   }
 

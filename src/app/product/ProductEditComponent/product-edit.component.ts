@@ -104,13 +104,14 @@ export class ProductEditComponent implements OnInit, OnDestroy {
 
 
   mySaveForm(){
-      let prod    = new CProduct();
-    prod.productNameSetter = this.formGroupObj.get("myproductName").value;
+       let prod    = new CProduct();
+   prod.productNameSetter = this.formGroupObj.get("myproductName").value;
     prod.productCodeSetter = this.formGroupObj.get("myproductCode").value;
     prod.productAvaliableDateSetter = this.formGroupObj.get("myproductAvaliableDate").value;
     prod.priceSetter =  this.formGroupObj.get("myprice").value;
     prod.productRatingSetter =this.formGroupObj.get("myproductRating").value;
     prod.productImageSetter = this.formGroupObj.get("myproductImage").value;
+
 
    // console.log("After clicking POST button")
       this._myHttpService.putproduct_Service_FromBackend(prod,this.formGroupObj.get("myproductId").value)
